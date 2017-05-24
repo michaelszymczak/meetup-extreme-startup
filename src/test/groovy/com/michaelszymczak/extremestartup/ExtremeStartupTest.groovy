@@ -29,7 +29,7 @@ class ExtremeStartupTest extends Specification {
   def "should_biggest_numbers"() {
     expect:
     server.answer("which of the following numbers is the largest: 179, 48") == "179"
-//    server.answer("which of the following numbers is the largest: 179, 48, 999, 10") == "999"
+    server.answer("which of the following numbers is the largest: 179, 48, 999, 10") == "999"
   }
 
 }
