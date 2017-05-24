@@ -18,6 +18,18 @@ class ExtremeStartupTest extends Specification {
 
   def "should_add_numbers"() {
     expect:
-    server.answer("what is the sum of 4 and 12") == "16"
+    server.answer("what is 5 plus 12") == "17"
   }
+
+  def "should_multiply_numbers"() {
+    expect:
+    server.answer("what is 3 multiplied by 2") == "6"
+  }
+
+  def "should_biggest_numbers"() {
+    expect:
+    server.answer("which of the following numbers is the largest: 179, 48") == "179"
+//    server.answer("which of the following numbers is the largest: 179, 48, 999, 10") == "999"
+  }
+
 }

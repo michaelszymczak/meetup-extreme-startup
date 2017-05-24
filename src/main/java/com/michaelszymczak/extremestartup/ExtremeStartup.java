@@ -1,7 +1,9 @@
 package com.michaelszymczak.extremestartup;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 import static spark.Spark.*;
 
@@ -20,19 +22,25 @@ public class ExtremeStartup {
   }
 
   public String answer(String question) {
+    String response = response(question);
+    log.info("Response: " + response);
+    return response;
+  }
+
+  private String response(String question) {
     log.info("Question: " + question);
     if (question == null)
       return teamName;
     //  curl http://localhost:1337/\?q=what%20is%20the%20sum%20of%204%20and%205
-    Matcher sumMatcher = Pattern.compile(".*what is the sum of (\\d+) and (\\d+)").matcher(question);
-    if (sumMatcher.matches()) {
-      return String.valueOf(Integer.parseInt(sumMatcher.group(1)) + Integer.parseInt(sumMatcher.group(2)));
-    }
-    return teamName;
+    return Stream.of(new SumAnswer(), new MultiplyAnswer(), new GreaterAnswer()).map(q -> q.answer(question))
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .findFirst()
+            .orElse(teamName);
   }
 
   public static void main(String[] args) {
-    final ExtremeStartup server = new ExtremeStartup("team name");
+    final ExtremeStartup server = new ExtremeStartup("charliemichael");
     port(1337);
     get("/", (Request request, Response response) -> server.answer(request.queryParams("q")));
   }
