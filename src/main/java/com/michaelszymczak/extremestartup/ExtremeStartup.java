@@ -32,7 +32,7 @@ public class ExtremeStartup {
     if (question == null)
       return teamName;
     //  curl http://localhost:1337/\?q=what%20is%20the%20sum%20of%204%20and%205
-    return Stream.of(new SumAnswer(), new MultiplyAnswer(), new GreaterAnswer()).map(q -> q.answer(question))
+    return Stream.of(new SumAnswer(), new MultiplyAnswer(), new GreaterAnswer(), new PrimeAnswer()).map(q -> q.answer(question))
             .filter(Optional::isPresent)
             .map(Optional::get)
             .findFirst()

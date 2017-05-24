@@ -32,4 +32,10 @@ class ExtremeStartupTest extends Specification {
     server.answer("which of the following numbers is the largest: 179, 48, 999, 10") == "999"
   }
 
+  def "should_primes_numbers"() {
+    expect:
+    server.answer("which of the following numbers are primes: 178, 11, 999, 10") == "11"
+    server.answer("which of the following numbers are primes: 7, 11, 999, 10") == "7, 11"
+  }
+
 }
