@@ -43,4 +43,9 @@ class ExtremeStartupTest extends Specification {
     server.answer("which of the following numbers is both a square and a cube: 4") == ""
   }
 
+  def "minus_numbers"() {
+    expect:
+    server.answer("what is 10 minus 9") == "1"
+  }
+
 }
