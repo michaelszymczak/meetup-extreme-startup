@@ -47,5 +47,9 @@ class ExtremeStartupTest extends Specification {
     expect:
     server.answer("what is 10 minus 9") == "1"
   }
+  def "power"() {
+    expect:
+    server.answer("what is 2 to the power of 3") == "8"
+  }
 
 }
