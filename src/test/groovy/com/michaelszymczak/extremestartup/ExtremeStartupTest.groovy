@@ -37,5 +37,10 @@ class ExtremeStartupTest extends Specification {
     server.answer("which of the following numbers are primes: 178, 11, 999, 10") == "11"
     server.answer("which of the following numbers are primes: 7, 11, 999, 10") == "7, 11"
   }
+  def "square_and_qube"() {
+    expect:
+    server.answer("which of the following numbers is both a square and a cube: 1, 64, 2") == "1, 64"
+    server.answer("which of the following numbers is both a square and a cube: 4") == ""
+  }
 
 }
