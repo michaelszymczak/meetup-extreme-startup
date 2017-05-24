@@ -52,4 +52,9 @@ class ExtremeStartupTest extends Specification {
     server.answer("what is 2 to the power of 3") == "8"
   }
 
+
+  def "multiply and sum"() {
+    expect:
+    server.answer("what is 2 multiplied by 3 plus 4") == "10"
+  }
 }
