@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'groovy'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'com.michaelszymczak.extremestartup.ExtremeStartup'
+sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.6.0'
+    compile group: 'com.google.guava', name: 'guava', version: '22.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.7'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'junit:junit:4.12'
+}
